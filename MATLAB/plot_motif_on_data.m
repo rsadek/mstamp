@@ -28,12 +28,16 @@ for i = 1:size(data, 2)
     plot(data(:, i), 'color', 'k');
 end
 
-
+colors = prism(64);
+indices = randperm(size(colors,1));
 for i = 1:length(motif_idx)
+    idx = indices(i);
+    c = colors(idx,:);
     for k = 1:length(motif_dim{i})
         motif_location = motif_idx(i):motif_idx(i) + sub_len - 1;
         motif = data(motif_location, motif_dim{i}(k));
-        plot(motif_location, motif, 'color', 'r');
+        %plot(motif_location, motif, 'color', 'r');
+        plot(motif_location, motif, 'color',c);
     end
 end
 
